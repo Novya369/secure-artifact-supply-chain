@@ -1,0 +1,5 @@
+Application: secure-artifact-app
+Version: 1.0.0
+Build-Time: Sun Jan  4 07:07:11 UTC 2026
+Git-Commit: 4c7f9a59c1fe797907b947883bc100ede46fab47
+Built-By: local-dev
