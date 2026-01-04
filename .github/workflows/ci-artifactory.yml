@@ -37,8 +37,15 @@ jobs:
           JF_URL: ${{ secrets.JF_URL }}
           JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
 
+      - name: Configure JFrog CLI server
+        run: |
+          jf c add artifactory-server \
+            --url="${JF_URL}" \
+            --access-token="${JF_ACCESS_TOKEN}" \
+            --interactive=false
+
       - name: Verify JFrog connectivity 
-        run: jf rt ping
+        run: jf rt ping --server-id=artifactory-server
       
       - name: Upload to Artifactory
         run: |
