@@ -28,6 +28,8 @@ jobs:
           name: secure-artifact-app-${{env.APP_VERSION}}
           path: build
           run-id: ${{ github.event.workflow_run.id }}
+          repository: ${{ github.repository }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup JFrog CLI
         uses: jfrog/setup-jfrog-cli@v4
