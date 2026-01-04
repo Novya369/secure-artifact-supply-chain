@@ -61,6 +61,7 @@ jobs:
           jf rt build-promote \
             secure-artifact-app \
             ${{env.APP_VERSION}} \
-            --source-repo=novyas-generic-local \ 
-            novyas-generic-release-local
+            novyas-generic-release-local \
+            --source-repo=novyas-generic-local  
+           
 
