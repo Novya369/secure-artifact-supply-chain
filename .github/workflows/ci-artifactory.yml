@@ -1,0 +1,56 @@
+name: Publish to Artifactory with Scan & Promotion
+
+on:
+  workflow_run:
+    workflows: ["Secure Build Pipeline"]
+    types:
+      - completed
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Read version
+        run: echo "APP_VERSION=$(cat app/version.txt)" >> $GITHUB_ENV
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: secure-artifact-app-${{ env.APP_VERSION }}
+          path: build
+
+      - name: Setup JFrog CLI
+        uses: jfrog/setup-jfrog-cli@v4
+        env:
+          JF_URL: ${{ secrets.JF_URL }}
+          JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
+
+      - name: Verify JFrog connectivity 
+        run: jf rt ping
+      
+      - name: Upload to Artifactory
+        run: |
+          jf rt upload \
+            "build/secure-artifact-app-${APP_VERSION}.tar.gz" \
+            novyas-generic-local/secure-artifact-app/${APP_VERSION}/ \
+            --build-name secure-artifact-app \
+            --build-number ${APP_VERSION}
+
+      - name: Publish build info
+        run: |
+          jf rt build-publish secure-artifact-app ${APP_VERSION}
+
+      - name: Xray scan
+        run: |
+          jf rt build-scan secure-artifact-app ${APP_VERSION}
+
+      - name: Promote build
+        run: |
+          jf rt build-promote \
+            secure-artifact-app ${APP_VERSION} \
+            novyas-generic-local novyas-generic-release-local
+
