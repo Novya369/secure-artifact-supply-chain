@@ -59,6 +59,8 @@ jobs:
       - name: Promote build
         run: |
           jf rt build-promote \
-            secure-artifact-app ${APP_VERSION} \
-            novyas-generic-local novyas-generic-release-local
+            secure-artifact-app \
+            ${{env.APP_VERSION}} \
+            --source-repo=novyas-generic-local \ 
+            novyas-generic-release-local
 
