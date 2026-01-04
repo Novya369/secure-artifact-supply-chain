@@ -1,0 +1,43 @@
+name: Secure Build Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set version
+        id: version
+        run: echo "APP_VERSION=$(cat app/version.txt)" >> $GITHUB_ENV
+
+      - name: Package application
+        run: |
+          mkdir -p build
+          tar -czf build/secure-artifact-app-${APP_VERSION}.tar.gz app/
+
+      - name: Generate build metadata
+        run: |
+          cat <<EOF > build/build-info.txt
+          Application: secure-artifact-app
+          Version: ${APP_VERSION}
+          Build-Time: $(date -u)
+          Git-Commit: $GITHUB_SHA
+          Built-By: github-actions
+          EOF
+
+      - name: Generate SHA256 checksum
+        run: |
+          shasum -a 256 build/secure-artifact-app-${APP_VERSION}.tar.gz > build/secure-artifact-app-${APP_VERSION}.sha256
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: secure-artifact-app-${APP_VERSION}
+          path: build/
+
