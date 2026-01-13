@@ -1,16 +1,16 @@
-\# Secure Artifact Supply Chain with Policy-Driven CI/CD (JFrog Artifactory)
+**Secure Artifact Supply Chain with Policy-Driven CI/CD (JFrog Artifactory)**
 
 
 
-\## Overview
+**Overview**
 
-This project demonstrates an end-to-end \*\*secure artifact supply chain\*\* using GitHub Actions and JFrog Artifactory.  
+This project demonstrates an end-to-end **secure artifact supply chain** using GitHub Actions and JFrog Artifactory.  
 
-It simulates how modern enterprises build, verify, publish, scan, and promote software artifacts with \*\*strong auditability and least-privilege access controls\*\*.
+It simulates how modern enterprises build, verify, publish, scan, and promote software artifacts with **strong auditability and least-privilege access controls**.
 
 
 
-The focus is \*\*pipeline security, artifact integrity, and traceability\*\*, not application complexity.
+The focus is **pipeline security, artifact integrity, and traceability**, not application complexity.
 
 
 
@@ -18,7 +18,7 @@ The focus is \*\*pipeline security, artifact integrity, and traceability\*\*, no
 
 
 
-\## Objective
+**Objective**
 
 Design and implement a secure CI/CD pipeline that:
 
@@ -26,7 +26,7 @@ Design and implement a secure CI/CD pipeline that:
 
 \- Builds and packages application artifacts
 
-\- Publishes artifacts to JFrog Artifactory using \*\*scoped access tokens\*\*
+\- Publishes artifacts to JFrog Artifactory using **scoped access tokens**
 
 \- Captures build metadata and integrity hashes
 
@@ -38,7 +38,7 @@ Design and implement a secure CI/CD pipeline that:
 
 
 
-This project simulates \*\*real-world DevSecOps and software supply-chain security practices\*\*.
+This project simulates **real-world DevSecOps and software supply-chain security practices**.
 
 
 
@@ -68,17 +68,11 @@ This project simulates \*\*real-world DevSecOps and software supply-chain securi
 
 \## Architecture (Logical Flow)
 
-Developer Commit  
+Developer Commit  → GitHub Actions (Secure Build Pipeline)  
 
-→ GitHub Actions (Secure Build Pipeline)  
+→ Versioned \& Hashed Artifact  → GitHub Actions (Publish Pipeline)  
 
-→ Versioned \& Hashed Artifact  
-
-→ GitHub Actions (Publish Pipeline)  
-
-→ JFrog Artifactory (Local Repository)  
-
-→ Build Info + Xray Scan  
+→ JFrog Artifactory (Local Repository)  → Build Info + Xray Scan  
 
 → Promotion to Release Repository
 
@@ -258,7 +252,7 @@ Security enforcement is performed at the artifact and build level, not within ap
 
 The pipeline enables:
 
-\- Full traceability from Git commit → build → artifact → promotion
+\- Full traceability from Git commit -> build -> artifact -> promotion
 
 \- Artifact integrity verification via checksums
 
@@ -286,9 +280,9 @@ The pipeline enables:
 
 ├── build/
 
-│ ├── secure-artifact-app-<version>.tar.gz
+│ ├── secure-artifact-app-'version'.tar.gz
 
-│ ├── secure-artifact-app-<version>.sha256
+│ ├── secure-artifact-app-'version'.sha256
 
 │ └── build-info.txt
 
