@@ -90,7 +90,7 @@ This project simulates **Real-world DevSecOps and supply-chain security practice
 
 \- Version controlled via `version.txt`
 
-\- SSL verification is \*\*not disabled\*\*
+\- SSL verification is **not disabled**
 
 \- Graceful handling of SSL inspection failures commonly observed in enterprise networks
 
@@ -175,7 +175,6 @@ Security enforcement is performed at the artifact and build level, not within ap
 **Trigger**: Push to `main`
 
 
-
 **Responsibilities**:
 
 \- Checkout source code
@@ -195,7 +194,6 @@ Security enforcement is performed at the artifact and build level, not within ap
 ###### Publish, Scan \& Promote Pipeline (`ci-artifactory.yml`)
 
 **Trigger**: `workflow\\\_run` (only after successful build)
-
 
 
 **Responsibilities**:
@@ -224,7 +222,7 @@ Security enforcement is performed at the artifact and build level, not within ap
 
 \- Build appears in Xray Build list
 
-\- Pipeline is \*\*policy-ready\*\* for enforcement
+\- Pipeline is **policy-ready** for enforcement
 
 \- Blocking policies can be added without changing pipeline structure
 
@@ -253,9 +251,6 @@ The pipeline enables:
 
 
 ##### Repository Structure
-
-
-
 .
 
 ├── app/ # Python application
@@ -268,9 +263,9 @@ The pipeline enables:
 
 ├── build/ # Build artifacts \& metadata
 
-│ ├── secure-artifact-app-<version>.tar.gz
+│ ├── secure-artifact-app-/<version/>.tar.gz
 
-│ ├── secure-artifact-app-<version>.sha256
+│ ├── secure-artifact-app-/<version/>.sha256
 
 │ └── build-info.txt
 
@@ -288,7 +283,7 @@ The pipeline enables:
 
 ##### Key Takeaways
 
-\- Demonstrates \*\*secure software supply-chain fundamentals\*\*
+\- Demonstrates **secure software supply-chain fundamentals**
 
 \- Shows real-world JFrog Artifactory \& Xray usage
 
@@ -296,7 +291,7 @@ The pipeline enables:
 
 \- Provides a strong base for policy enforcement and compliance
 
-\- Designed for \*\*DevSecOps and platform security roles\*\*
+\- Designed for **DevSecOps and platform security roles**
 
 ---
 
