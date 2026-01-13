@@ -1,24 +1,22 @@
-\# Secure Artifact Supply Chain with Policy-Driven CI/CD (JFrog Artifactory)
+### **Secure Artifact Supply Chain with Policy-Driven CI/CD (JFrog Artifactory)**
 
 
 
-\## Overview
+##### Overview
 
-This project demonstrates an end-to-end \*\*secure artifact supply chain\*\* using GitHub Actions and JFrog Artifactory.  
+This project demonstrates an end-to-end **secure artifact supply chain** using GitHub Actions and JFrog Artifactory.
 
-It simulates how modern enterprises build, verify, publish, scan, and promote software artifacts with \*\*strong auditability and least-privilege access controls\*\*.
-
-
-
-The focus is \*\*pipeline security, artifact integrity, and traceability\*\*, not application complexity.
+It simulates how modern enterprises build, verify, publish, scan, and promote software artifacts with **strong auditability and least-privilege access controls**.
 
 
+
+The focus is **pipeline security, artifact integrity, and traceability**, not application complexity.
 
 ---
 
 
 
-\## Objective
+##### Objective
 
 Design and implement a secure CI/CD pipeline that:
 
@@ -26,7 +24,7 @@ Design and implement a secure CI/CD pipeline that:
 
 \- Builds and packages application artifacts
 
-\- Publishes artifacts to JFrog Artifactory using \*\*scoped access tokens\*\*
+\- Publishes artifacts to JFrog Artifactory using **scoped access tokens**
 
 \- Captures build metadata and integrity hashes
 
@@ -38,15 +36,13 @@ Design and implement a secure CI/CD pipeline that:
 
 
 
-This project simulates \*\*real-world DevSecOps and supply-chain security practices\*\*.
-
-
+This project simulates **Real-world DevSecOps and supply-chain security practices**.
 
 ---
 
 
 
-\## Scope
+##### Scope
 
 \- One application (simple Python example)
 
@@ -60,37 +56,33 @@ This project simulates \*\*real-world DevSecOps and supply-chain security practi
 
 \- Audit and documentation
 
-
-
 ---
 
 
 
-\## Architecture (Logical Flow)
+##### Architecture (Logical Flow)
 
 
 
-→ Developer Commit  
+→ Developer Commit
 
-→ GitHub Actions (Secure Build Pipeline)  
+→ GitHub Actions (Secure Build Pipeline)
 
-→ Versioned \& Hashed Artifact  
+→ Versioned \& Hashed Artifact
 
-→ GitHub Actions (Publish Pipeline)  
+→ GitHub Actions (Publish Pipeline)
 
-→ JFrog Artifactory (Local Repository)  
+→ JFrog Artifactory (Local Repository)
 
-→ Build Info + Xray Scan  
+→ Build Info + Xray Scan
 
 → Promotion to Release Repository
 
-
-
 ---
 
 
 
-\## Application
+##### Application
 
 \- Simple Python application
 
@@ -106,17 +98,15 @@ This project simulates \*\*real-world DevSecOps and supply-chain security practi
 
 This ensures secure defaults and predictable builds.
 
-
-
 ---
 
 
 
-\## Security Controls Implemented
+##### Security Controls Implemented
 
 
 
-\### Secure Build Practices
+###### Secure Build Practices
 
 \- Versioned artifacts
 
@@ -124,31 +114,31 @@ This ensures secure defaults and predictable builds.
 
 \- Build metadata capture:
 
-&nbsp; - Application name
+  - Application name
 
-&nbsp; - Version
+  - Version
 
-&nbsp; - Git commit SHA
+  - Git commit SHA
 
-&nbsp; - Build time
+  - Build time
 
-&nbsp; - Build executor
+  - Build executor
 
 
 
-\### Secure Authentication
+###### Secure Authentication
 
 \- No username/password authentication
 
 \- No secrets committed to repository
 
-\- JFrog access via \*\*scoped access token\*\*
+\- JFrog access via **scoped access token**
 
 \- Secrets stored in GitHub Secrets / Variables
 
 
 
-\### CI/CD Pipeline Hardening
+###### CI/CD Pipeline Hardening
 
 \- Separation of build and publish pipelines
 
@@ -158,7 +148,7 @@ This ensures secure defaults and predictable builds.
 
 
 
-\### Artifact Governance
+###### Artifact Governance
 
 \- Build info published to Artifactory
 
@@ -168,27 +158,25 @@ This ensures secure defaults and predictable builds.
 
 
 
-\### Design choice
+###### Design choice
 
 Security enforcement is performed at the artifact and build level, not within application logic, to align with centralized governance models.
-
-
 
 ---
 
 
 
-\## CI/CD Workflows
+##### CI/CD Workflows
 
 
 
-\### Secure Build Pipeline (`build.yml`)
+###### Secure Build Pipeline (`build.yml`)
 
-\*\*Trigger:\*\* Push to `main`
+**Trigger**: Push to `main`
 
 
 
-\*\*Responsibilities:\*\*
+**Responsibilities**:
 
 \- Checkout source code
 
@@ -204,17 +192,13 @@ Security enforcement is performed at the artifact and build level, not within ap
 
 
 
----
+###### Publish, Scan \& Promote Pipeline (`ci-artifactory.yml`)
+
+**Trigger**: `workflow\\\_run` (only after successful build)
 
 
 
-\### Publish, Scan \& Promote Pipeline (`ci-artifactory.yml`)
-
-\*\*Trigger:\*\* `workflow\_run` (only after successful build)
-
-
-
-\*\*Responsibilities:\*\*
+**Responsibilities**:
 
 \- Download build artifacts
 
@@ -230,13 +214,11 @@ Security enforcement is performed at the artifact and build level, not within ap
 
 \- Promote build to release repository
 
-
-
 ---
 
 
 
-\## Security Scanning (Xray)
+##### Security Scanning (Xray)
 
 \- Xray build scan is executed on published build info
 
@@ -248,15 +230,13 @@ Security enforcement is performed at the artifact and build level, not within ap
 
 
 
-> Note: This project demonstrates scanning and governance readiness rather than enforcing a blocking policy.
-
-
+**Note**: This project demonstrates scanning and governance readiness rather than enforcing a blocking policy.
 
 ---
 
 
 
-\## Auditability \& Traceability
+##### Auditability \& Traceability
 
 The pipeline enables:
 
@@ -268,13 +248,11 @@ The pipeline enables:
 
 \- Historical audit of promoted releases
 
-
-
 ---
 
 
 
-\## Repository Structure
+##### Repository Structure
 
 
 
@@ -304,13 +282,11 @@ The pipeline enables:
 
 └── README.md
 
-
-
 ---
 
 
 
-\## Key Takeaways
+##### Key Takeaways
 
 \- Demonstrates \*\*secure software supply-chain fundamentals\*\*
 
@@ -322,13 +298,11 @@ The pipeline enables:
 
 \- Designed for \*\*DevSecOps and platform security roles\*\*
 
-
-
 ---
 
 
 
-\## Future Enhancements 
+##### Future Enhancements
 
 \- Enforce Xray blocking policies
 
@@ -336,15 +310,13 @@ The pipeline enables:
 
 \- Use OIDC-based authentication
 
-
-
 ---
 
 
 
-\## Author
+###### Author
 
-\*\*Novya Sharma\*\*  
+**Novya** **Sharma**
 
 DevSecOps | CI/CD Security | Software Supply Chain Security
 
