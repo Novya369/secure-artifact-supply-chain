@@ -46,7 +46,7 @@ This project simulates **real-world DevSecOps and software supply-chain security
 
 
 
-\## Scope
+**Scope**
 
 \- One application (simple Python example)
 
@@ -66,7 +66,7 @@ This project simulates **real-world DevSecOps and software supply-chain security
 
 
 
-\## Architecture (Logical Flow)
+**Architecture (Logical Flow)**
 
 Developer Commit  → GitHub Actions (Secure Build Pipeline)  
 
@@ -82,7 +82,7 @@ Developer Commit  → GitHub Actions (Secure Build Pipeline)
 
 
 
-\## Application
+**Application**
 
 \- Simple Python application
 
@@ -90,7 +90,7 @@ Developer Commit  → GitHub Actions (Secure Build Pipeline)
 
 \- Version controlled via `version.txt`
 
-\- SSL verification is \*\*not disabled\*\*
+\- SSL verification is **not disabled**
 
 \- Graceful handling of SSL inspection failures commonly observed in enterprise networks
 
@@ -104,11 +104,11 @@ This ensures secure defaults and predictable builds.
 
 
 
-\## Security Controls Implemented
+**Security Controls Implemented**
 
 
 
-\### Secure Build Practices
+**Secure Build Practices**
 
 \- Versioned artifacts
 
@@ -128,19 +128,19 @@ This ensures secure defaults and predictable builds.
 
 
 
-\### Secure Authentication
+**Secure Authentication**
 
 \- No username/password authentication
 
 \- No secrets committed to the repository
 
-\- JFrog access via \*\*scoped access token\*\*
+\- JFrog access via **scoped access token**
 
 \- Secrets stored in GitHub Secrets / Variables
 
 
 
-\### CI/CD Pipeline Hardening
+**CI/CD Pipeline Hardening**
 
 \- Separation of build and publish pipelines
 
@@ -150,7 +150,7 @@ This ensures secure defaults and predictable builds.
 
 
 
-\### Artifact Governance
+**Artifact Governance**
 
 \- Build info published to Artifactory
 
@@ -160,7 +160,7 @@ This ensures secure defaults and predictable builds.
 
 
 
-\### Design Choice
+**Design Choice**
 
 Security enforcement is performed at the artifact and build level, not within application logic, to align with centralized governance models.
 
@@ -170,17 +170,17 @@ Security enforcement is performed at the artifact and build level, not within ap
 
 
 
-\## CI/CD Workflows
+**CI/CD Workflows**
 
 
 
-\### Secure Build Pipeline (`build.yml`)
+**Secure Build Pipeline (`build.yml`)**
 
-\*\*Trigger:\*\* Push to `main`
+*Trigger*: Push to `main`
 
 
 
-\*\*Responsibilities:\*\*
+*Responsibilities*:
 
 \- Checkout source code
 
@@ -200,13 +200,13 @@ Security enforcement is performed at the artifact and build level, not within ap
 
 
 
-\### Publish, Scan \& Promote Pipeline (`ci-artifactory.yml`)
+**Publish, Scan \& Promote Pipeline (`ci-artifactory.yml`)**
 
-\*\*Trigger:\*\* `workflow\_run` (only after successful build)
+*Trigger*: `workflow\_run` (only after successful build)
 
 
 
-\*\*Responsibilities:\*\*
+*Responsibilities:*
 
 \- Download build artifacts
 
@@ -228,19 +228,19 @@ Security enforcement is performed at the artifact and build level, not within ap
 
 
 
-\## Security Scanning (Xray)
+**Security Scanning (Xray)**
 
 \- Xray build scan is executed on published build info
 
 \- Build appears in the Xray Builds view
 
-\- Pipeline is \*\*policy-ready\*\* for enforcement
+\- Pipeline is **policy-ready** for enforcement
 
 \- Blocking policies can be added without changing pipeline structure
 
 
 
-> \*\*Note:\*\* This project demonstrates scanning and governance readiness rather than enforcing a blocking policy.
+**Note**: This project demonstrates scanning and governance readiness rather than enforcing a blocking policy.
 
 
 
@@ -248,7 +248,7 @@ Security enforcement is performed at the artifact and build level, not within ap
 
 
 
-\## Auditability \& Traceability
+**Auditability \& Traceability**
 
 The pipeline enables:
 
@@ -266,7 +266,7 @@ The pipeline enables:
 
 
 
-\## Repository Structure
+**Repository Structure**
 
 .
 
@@ -300,9 +300,9 @@ The pipeline enables:
 
 
 
-\## Key Takeaways
+**Key Takeaways**
 
-\- Demonstrates \*\*secure software supply-chain fundamentals\*\*
+\- Demonstrates **secure software supply-chain fundamentals**
 
 \- Shows real-world JFrog Artifactory \& Xray usage
 
@@ -310,15 +310,13 @@ The pipeline enables:
 
 \- Provides a strong base for policy enforcement and compliance
 
-\- Designed for \*\*DevSecOps and platform security roles\*\*
-
 
 
 ---
 
 
 
-\## Future Enhancements
+**Future Enhancements**
 
 \- Enforce Xray blocking policies
 
@@ -332,9 +330,9 @@ The pipeline enables:
 
 
 
-\## Author
+**Author**
 
-\*\*Novya Sharma\*\*  
+***Novya Sharma***
 
 DevSecOps | CI/CD Security | Software Supply Chain Security  
 
